@@ -14,8 +14,8 @@ public class BlogCreateRequest {
 
     @NotEmpty
     private String title;
-    private Category category;
-    private Users createdBy;
+    private int categoryId;
+    private int createdBy;
     private String content;
     private BlogStatus status;
 }

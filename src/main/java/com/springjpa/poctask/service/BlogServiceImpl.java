@@ -36,9 +36,9 @@ public class BlogServiceImpl implements BlogService{
     public Blog addBlog(BlogCreateRequest blogCreateRequest) {
         Blog blog = new Blog();
         blog.setTitle(blogCreateRequest.getTitle());
-        Optional<Category> byCategoryId = categoryRepository.findById(blogCreateRequest.getCreatedBy().getId());
-        byCategoryId.ifPresent(ifExist-> blog.setCategory(blogCreateRequest.getCategory()));
-        Optional<Users> byUserId = userRepository.findById(blogCreateRequest.getCreatedBy().getId());
+        Optional<Category> byCategoryId = categoryRepository.findById(blogCreateRequest.getCategoryId());
+        byCategoryId.ifPresent(blog::setCategory);
+        Optional<Users> byUserId = userRepository.findById(blogCreateRequest.getCreatedBy());
         byUserId.ifPresent(blog::setCreatedBy);
         blog.setContent(blogCreateRequest.getContent());
         blog.setStatus(blogCreateRequest.getStatus());

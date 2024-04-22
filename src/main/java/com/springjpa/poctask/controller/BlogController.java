@@ -28,8 +28,8 @@ public class BlogController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Blog> getBlogById(@PathVariable int blogId){
-        Blog blogById = blogService.getBlogById(blogId);
+    public ResponseEntity<Blog> getBlogById(@PathVariable int id){
+        Blog blogById = blogService.getBlogById(id);
         return ResponseEntity.status(HttpStatus.OK).body(blogById);
     }
 
@@ -42,25 +42,25 @@ public class BlogController {
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<String> deleteBlogById(@PathVariable int blogId){
-        blogService.deleteBlogById(blogId);
+    public ResponseEntity<String> deleteBlogById(@PathVariable int id){
+        blogService.deleteBlogById(id);
         return ResponseEntity.status(HttpStatus.OK).body("Deleted the given blog.");
     }
 
     @PutMapping("/{id}")
     @Validated
     @Transactional
-    public ResponseEntity<Blog> updateBlogById(@PathVariable int blogId, @RequestBody @Valid Blog blog){
-        Blog blogById = blogService.updateBlogById(blogId, blog);
+    public ResponseEntity<Blog> updateBlogById(@PathVariable int id, @RequestBody @Valid Blog blog){
+        Blog blogById = blogService.updateBlogById(id, blog);
         return ResponseEntity.status(HttpStatus.OK).body(blogById);
     }
 
     @GetMapping("/category/{id}")
-    public List<BlogResponseWithoutContent> getAllBlogsByCategoryId(@PathVariable int categoryId){
-        return blogService.getAllBlogsByCategoryId(categoryId);
+    public List<BlogResponseWithoutContent> getAllBlogsByCategoryId(@PathVariable int id){
+        return blogService.getAllBlogsByCategoryId(id);
     }
     @GetMapping("/user/{id}")
-    public List<BlogResponseWithoutContent> getAllBlogsByUserId(@PathVariable int userId){
-        return blogService.getAllBlogsByUserId(userId);
+    public List<BlogResponseWithoutContent> getAllBlogsByUserId(@PathVariable int id){
+        return blogService.getAllBlogsByUserId(id);
     }
 }

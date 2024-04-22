@@ -23,6 +23,7 @@ public class UsersController {
     @PostMapping()
     @Validated
     public ResponseEntity<Users> createUser(@RequestBody @Valid UserCreateRequest userRequest){
+
         Users addUser = userService.createUser(userRequest);
         return ResponseEntity.status(HttpStatus.CREATED).body(addUser);
     }

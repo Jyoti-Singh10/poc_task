@@ -48,7 +48,9 @@ public class CategoryServiceImpl implements CategoryService{
     @Transactional
     public Category updateCategoryById(int id, Category category) {
         if(category.getId()!=id) throw new RuntimeException("Id not matched.");
-        return categoryRepository.findById(id).map(existingCategoryId-> categoryRepository.save(category)).orElseThrow(()->new RuntimeException("Category Id not found."));
+        return categoryRepository.findById(id)
+                .map(existingCategoryId-> categoryRepository.save(category))
+                .orElseThrow(()->new RuntimeException("Category Id not found."));
     }
 
     @Override

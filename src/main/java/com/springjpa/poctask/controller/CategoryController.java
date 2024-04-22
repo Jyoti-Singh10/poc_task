@@ -56,7 +56,7 @@ public class CategoryController {
     }
 
     @GetMapping("/user/{id}")
-    public List<Category> getCategoryByUserId(@PathVariable int userId){
-        return categoryService.getCategoryByUserId(userId);
+    public List<Category> getCategoryByUserId(@PathVariable int id){
+        return categoryService.getCategoryByUserId(id);
     }
 }
